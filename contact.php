@@ -2,29 +2,25 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(isset($_POST['send']))
-  {
-$name=$_POST['fullname'];
-$email=$_POST['email'];
-$contactno=$_POST['contactno'];
-$message=$_POST['message'];
-$sql="INSERT INTO  tblcontactusquery(name,EmailId,ContactNumber,Message) VALUES(:name,:email,:contactno,:message)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':name',$name,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
-$query->bindParam(':contactno',$contactno,PDO::PARAM_STR);
-$query->bindParam(':message',$message,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
+if (isset($_POST['send'])) {
+	$name = $_POST['fullname'];
+	$email = $_POST['email'];
+	$contactno = $_POST['contactno'];
+	$message = $_POST['message'];
+	$sql = "INSERT INTO  tblcontactusquery(name,EmailId,ContactNumber,Message) VALUES(:name,:email,:contactno,:message)";
+	$query = $dbh->prepare($sql);
+	$query->bindParam(':name', $name, PDO::PARAM_STR);
+	$query->bindParam(':email', $email, PDO::PARAM_STR);
+	$query->bindParam(':contactno', $contactno, PDO::PARAM_STR);
+	$query->bindParam(':message', $message, PDO::PARAM_STR);
+	$query->execute();
+	$lastInsertId = $dbh->lastInsertId();
+	if ($lastInsertId) {
 
-echo '<script>alert("Query Sent. We will contact you shortly.")</script>';
-}
-else 
-{
-echo "<script>alert('Something went wrong. Please try again.');</script>";  
-}
+		echo '<script>alert("Query Sent. We will contact you shortly.")</script>';
+	} else {
+		echo "<script>alert('Something went wrong. Please try again.');</script>";
+	}
 
 }
 ?>
@@ -35,7 +31,7 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 <head>
 	<title>Blood Bank Donar Management System | Contact Us </title>
 	<!-- Meta tag Keywords -->
-	
+
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -57,16 +53,18 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 	<!-- //Custom-Files -->
 
 	<!-- Web-Fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
+	<link
+		href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		rel="stylesheet">
+	<link
+		href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		rel="stylesheet">
 	<!-- //Web-Fonts -->
 
 </head>
 
 <body>
-	<?php include('includes/header.php');?>
+	<?php include('includes/header.php'); ?>
 
 	<!-- banner 2 -->
 	<div class="inner-banner-w3ls">
@@ -76,7 +74,7 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 		<!-- //banner 2 -->
 	</div>
 	<!-- page details -->
-	<div class="breadcrumb-agile">
+	<!-- <div class="breadcrumb-agile">
 		<div aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
@@ -85,11 +83,11 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 				<li class="breadcrumb-item active" aria-current="page">Contact Us</li>
 			</ol>
 		</div>
-	</div>
+	</div> -->
 	<!-- //page details -->
 
 	<!-- contact -->
-	<div class="agileits-contact py-5">
+	<div class="agileits-contact">
 		<div class="py-xl-5 py-lg-3">
 			<div class="w3ls-titles text-center mb-5">
 				<h3 class="title">Contact Us</h3>
@@ -106,19 +104,23 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 					<form action="#" method="post">
 						<div class="d-flex space-d-flex">
 							<div class="form-group grid-inputs">
-								 <input type="text" class="form-control" id="name" name="fullname" placeholder="Please enter your name.">
+								<input type="text" class="form-control" id="name" name="fullname"
+									placeholder="Please enter your name.">
 							</div>
 							<div class="form-group grid-inputs">
-								<input type="tel" class="form-control" id="phone" name="contactno"  placeholder="Please enter your phone number.">
+								<input type="tel" class="form-control" id="phone" name="contactno"
+									placeholder="Please enter your phone number.">
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control" id="email" name="email" required placeholder="Please enter your email address.">
+							<input type="email" class="form-control" id="email" name="email" required
+								placeholder="Please enter your email address.">
 						</div>
-						
+
 
 						<div class="form-group">
-							<textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Please enter your message" maxlength="999" style="resize:none"></textarea>
+							<textarea rows="10" cols="100" class="form-control" id="message" name="message"
+								placeholder="Please enter your message" maxlength="999" style="resize:none"></textarea>
 						</div>
 						<div class="form-group">
 							<input type="submit" value="Send Message" name="send">
@@ -130,10 +132,10 @@ echo "<script>alert('Something went wrong. Please try again.');</script>";
 	</div>
 	<!-- //contact -->
 
-	
 
 
-	<?php include('includes/footer.php');?>
+
+	<?php include('includes/footer.php'); ?>
 
 	<!-- Js files -->
 	<!-- JavaScript -->
