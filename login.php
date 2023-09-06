@@ -3,7 +3,8 @@ error_reporting(0);
 include('includes/config.php');
 if (isset($_POST['login'])) {
 	$email = $_POST['email'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
+	// $password = md5($_POST['password']);
 	$sql = "SELECT id FROM tblblooddonars WHERE EmailId=:email and Password=:password";
 	$query = $dbh->prepare($sql);
 	$query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -30,7 +31,7 @@ if (isset($_POST['login'])) {
 	<!-- Meta tag Keywords -->
 
 	<script>
-		addEventListener("load", function () {
+		addEventListener("load", funct ion() {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
@@ -126,7 +127,7 @@ if (isset($_POST['login'])) {
 	<!-- banner slider -->
 	<script src="js/responsiveslides.min.js"></script>
 	<script>
-		$(function () {
+		$(funct ion() {
 			$("#slider4").responsiveSlides({
 				auto: true,
 				pager: true,

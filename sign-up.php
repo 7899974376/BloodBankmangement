@@ -12,7 +12,9 @@ if (isset($_POST['submit'])) {
 	$address = $_POST['address'];
 	$message = $_POST['message'];
 	$status = 1;
-	$password = md5($_POST['password']);
+	// $password = md5($_POST['password']);
+
+	$password = $_POST['password'];
 	$ret = "select EmailId from tblblooddonars where EmailId=:email";
 	$query = $dbh->prepare($ret);
 	$query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -56,13 +58,13 @@ if (isset($_POST['submit'])) {
 	<!-- Meta tag Keywords -->
 
 	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
 	</script>
 	<!--// Meta tag Keywords -->
 
@@ -151,9 +153,9 @@ if (isset($_POST['submit'])) {
 							$cnt = 1;
 							if ($query->rowCount() > 0) {
 								foreach ($results as $result) { ?>
-									<option value="<?php echo htmlentities($result->BloodGroup); ?>">
-										<?php echo htmlentities($result->BloodGroup); ?></option>
-								<?php }
+								  <option value="<?php echo htmlentities($result->BloodGroup); ?>">
+							  		<?php echo htmlentities($result->BloodGroup); ?></option>
+						   	<?php }
 							} ?>
 						</select>
 					</div>
@@ -198,21 +200,21 @@ if (isset($_POST['submit'])) {
 	<!-- banner slider -->
 	<script src="js/responsiveslides.min.js"></script>
 	<script>
-		$(function () {
-			$("#slider4").responsiveSlides({
-				auto: true,
-				pager: true,
-				nav: true,
-				speed: 1000,
-				namespace: "callbacks",
-				before: function () {
-					$('.events').append("<li>before event fired.</li>");
-				},
-				after: function () {
-					$('.events').append("<li>after event fired.</li>");
-				}
-			});
+	$(function() {
+		$("#slider4").responsiveSlides({
+			auto: true,
+			pager: true,
+			nav: true,
+			speed: 1000,
+			namespace: "callbacks",
+			before: function() {
+				$('.events').append("<li>before event fired.</li>");
+			},
+			after: function() {
+				$('.events').append("<li>after event fired.</li>");
+			}
 		});
+	});
 	</script>
 	<!-- //banner slider -->
 
